@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Premio!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #71b1fb;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            width: 100%;
+            aspect-ratio: 1 / 1.5;
+            /* Relación de aspecto para mantener la forma de las cartas */
+            background-color: #71b1fb;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s, color 0.3s;
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card.flipped {
+            background-color: #fff;
+            color: #71b1fb;
+            font-size: 1em;
+            cursor: default;
+            pointer-events: none;
+            transition: background-color 0.6s, color 0.6s;
+        }
+
+        .card p {
+            margin: 0;
+            padding: 10px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>¡Felicidades!</h1>
+        <p>Has ganado un regalo especial. Haz clic en una carta para revelar tu premio. 🩵</p>
+
+        <div class="cards">
+            <div class="card" onclick="revealMessage(this, 'Ponte linda para el domingo 15')">Haz clic</div>
+            <div class="card" onclick="revealMessage(this, 'Tendremos una cita')">Haz clic</div>
+            <div class="card" onclick="revealMessage(this, `Yo paso por ti (yo te llamo a discord)`)">Haz clic</div>
+            <div class="card" onclick="revealMessage(this, 'Vamos a comer pollito y un helado')">Haz clic</div>
+            <div class="card"
+                onclick="revealMessage(this, 'Antes que entres a trabajar y posiblemente te muestre algo')">Haz clic
+            </div>
+            <div class="card" onclick="revealMessage(this, 'Fin del comunicado SOLO MILLOS LOKA')">Haz clic</div>
+        </div>
+    </div>
+
+    <script>
+        function revealMessage(card, message) {
+            card.classList.add('flipped');
+            card.innerHTML = `<p>${message}</p>`;
+        }
+    </script>
+</body>
+
+</html>
